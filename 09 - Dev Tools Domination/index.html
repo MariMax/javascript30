@@ -18,28 +18,39 @@
     }
 
     // Regular
+    console.log('hello');
 
     // Interpolated
+    console.log('hello %s', 'dd');
 
     // Styled
-
+    console.log('%c text','font-size:11px');
     // warning!
-
+    console.warn('warning');
     // Error :|
-
+    console.error('error')
     // Info
-
+    console.info('info');
     // Testing
-
+    console.assert(1===1, 'that is wrong')
     // clearing
-
+    console.clear();
     // Viewing DOM Elements
-
+    console.log(document.querySelector('p'));
     // Grouping together
-
+    console.group('groupName');
+    console.log('1')
+    console.log('2')
+    console.log('3')
+    console.groupEnd('groupName');
     // counting
-
+    console.count('Max');
+    console.count('Max');
+    console.count('Max');
+    console.count('Max');
     // timing
+    console.time('fetch');
+    console.timeEnd('fetch');
 
   </script>
 </body>
