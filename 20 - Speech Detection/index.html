@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Speech Detection</title>
 </head>
+
 <body>
 
   <div class="words" contenteditable>
   </div>
 
-<script>
+  <script>
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  const recognintion = new SpeechRecognition();
+  recognintion.interimResults = true;
+
+  let p = document.createElement('p');
+  const words = document.querySelector('.words');
+  words.append(p);
+
+  recognintion.addEventListener('result', e => {
+
+    const transcript = Array.from(e.results)
+      .map(result => result[0])
+      .map(result => result.transcript)
+      .join('');
+    p.textContent = transcript;
+    if (e.results[0].isFinal) {
+      p = document.createElement('p');
+      words.appendChild(p);
+    }
+  });
+
+  recognintion.addEventListener('end', recognintion.start);
+
+  recognintion.start();
 
 
 </script>
 
 
-  <style>
+<style>
     html {
       font-size: 10px;
     }
@@ -57,4 +83,5 @@
   </style>
 
 </body>
+
 </html>
